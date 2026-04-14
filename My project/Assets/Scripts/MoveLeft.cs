@@ -15,9 +15,9 @@ public class MoveLeft : MonoBehaviour
         playerController = script;
 
     }
-   /* void Update()
+    void Update()
     {
-        if (!PlayerController.IsGameOver())
+        if (!playerController.IsGameOver())
         {
             transform.Translate(Vector3.left * speed * Time.deltaTime);    
 
@@ -26,5 +26,5 @@ public class MoveLeft : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-    }*/
+    }
 }
