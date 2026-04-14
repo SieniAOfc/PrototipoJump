@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private Animator playerAnim;
     public ParticleSystem explosionParticle;
     public ParticleSystem dirtParticle;
+    [SerializeField] HudManager hudManager;
 
     public int currentLifes;
     [SerializeField] int maxLifes;
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
         Physics.gravity *= gravityModifier;
         playerAnim = GetComponent<Animator>();
         currentLifes = maxLifes;
+        hudManager.updateLifes(currentLifes);
     }
 
     // Update is called once per frame
@@ -46,7 +48,11 @@ public class PlayerController : MonoBehaviour
         } else if (collision.gameObject.CompareTag("Obstacle"))
         {
             currentLifes--;
-            if(currentLifes == 0) processGameOver();
+            hudManager.updateLifes(currentLifes);
+            if(currentLifes == 0) 
+            {
+                processGameOver();
+            }
         }     
     }
 
