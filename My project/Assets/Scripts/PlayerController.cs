@@ -37,17 +37,6 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    private void OnEnable()
-    {
-        jumpAction.Enable();
-    }
-
-
-    private void OnDisable()
-    {
-        jumpAction.Disable();
-    }
-
     void Update()
     {
         if (jumpAction.WasPressedThisFrame() && isOnGround && !gameOver)
