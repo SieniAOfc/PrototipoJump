@@ -1010,9 +1010,10 @@ MonoBehaviour:
   gravityModifier: 1.5
   explosionParticle: {fileID: 230790461}
   dirtParticle: {fileID: 1968152797}
-  currentLifes: 0
+  currentLifes: 3
   maxLifes: 3
   hudManager: {fileID: 17135613}
+  inputActions: {fileID: -944628639613478452, guid: 289c1b55c9541489481df5cc06664110, type: 3}
 --- !u!65 &1037827343
 BoxCollider:
   m_ObjectHideFlags: 0

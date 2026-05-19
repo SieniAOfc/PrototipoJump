@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class PlayerController : MonoBehaviour
     public int currentLifes;
     [SerializeField] int maxLifes;
     [SerializeField] HudManager hudManager;
+    [SerializeField] InputActionAsset inputActions;
+    private InputAction jumpAction;
 
     void Start()
     {
@@ -27,9 +30,27 @@ public class PlayerController : MonoBehaviour
         hudManager.updateLifes(currentLifes);
     }
 
+    void Awake()
+    {
+        
+        jumpAction = inputActions.FindAction("Jump");
+        
+    }
+
+    private void OnEnable()
+    {
+        jumpAction.Enable();
+    }
+
+
+    private void OnDisable()
+    {
+        jumpAction.Disable();
+    }
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !gameOver)
+        if (jumpAction.WasPressedThisFrame() && isOnGround && !gameOver)
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isOnGround = false;
